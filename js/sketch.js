@@ -8,11 +8,20 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight); // Ne pas toucher à cette ligne
+  rectMode(CENTER);
+  
+  
+  
 }
 
 function draw() {
-  background(255);
+  map (second(), 0, 59, 0, 1);
+
+  background(0, 0, 0);
   showTime(); // Ne pas toucher à cette ligne
+  rect (second(), width * second(), height/2, 30, 30);
+   
+  
 }
 
 function windowResized() {
@@ -28,7 +37,7 @@ function showTime() {
     ":" +
     formatTime(second());
   textFont(customFont);
-  fill(0); // <----- Changez cette valeur pour manipuler la couleur du texte
+  fill(255, 255, 255); // <----- Changez cette valeur pour manipuler la couleur du texte
   textSize(36);
   text(time, 20, height - 20);
 }
