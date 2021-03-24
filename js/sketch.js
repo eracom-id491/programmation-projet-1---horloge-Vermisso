@@ -1,27 +1,44 @@
 let customFont; // Ne pas toucher à cette ligne
+var gif_loadImg;
+let escargot;
+let soleil;
+let lune;
+
+
 
 // Ne pas toucher au bloc ci-dessous
 function preload() {
   customFont = loadFont("../assets/Suisse Bold.otf");
+  escargot = loadImage('img/Escargot.gif');
+  soleil = loadImage('img/Soleil.png');
+  lune = loadImage('img/Lune.png');
 }
 // ---------------------------------- s//
 
-function setup() {
+function setup(){
+  pixelDensity(1);
   createCanvas(windowWidth, windowHeight); // Ne pas toucher à cette ligne
   rectMode(CENTER);
-  
-  
+  imageMode(BOTTOM);
+  textAlign(CENTER);
+  noStroke();
   
 }
 
-function draw() {
-  map (second(), 0, 59, 0, 1);
-
+function draw(){
   background(0, 0, 0);
   showTime(); // Ne pas toucher à cette ligne
-  rect (second(), width * second(), height/2, 30, 30);
-   
-  
+
+  fill (255, 255, 255);
+  let t = map(minute(), 0, 59, 0, 1);
+  image(escargot, t * width, height - 150, 150, 150);
+  let s = map(second(), 0, 59, 0, TWO_PI) - HALF_PI;
+  rotate(HALF_PI);
+  translate(height, -width/2);
+  fill(255,0,0);
+  image(soleil, 0 + cos(s) * width /2 , 0 + sin(s) * width / 2, 200, 200);
+  fill(0, 255, 0);
+  image(lune, 0 + - cos(s) * width / 2  , 0 + -sin(s) * width / 2 , 200, 200);
 }
 
 function windowResized() {
@@ -39,7 +56,7 @@ function showTime() {
   textFont(customFont);
   fill(255, 255, 255); // <----- Changez cette valeur pour manipuler la couleur du texte
   textSize(36);
-  text(time, 20, height - 20);
+  text(time, width/2, height/2);
 }
 
 function formatTime(value) {
