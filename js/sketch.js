@@ -3,6 +3,8 @@ var gif_loadImg;
 let escargot;
 let soleil;
 let lune;
+let Lapin
+let millisecond = millis();
 
 
 
@@ -12,6 +14,7 @@ function preload() {
   escargot = loadImage('img/Escargot.gif');
   soleil = loadImage('img/Soleil.png');
   lune = loadImage('img/Lune.png');
+  Lapin = loadImage('img/Lapin.gif');
 }
 // ---------------------------------- s//
 
@@ -32,9 +35,11 @@ function draw(){
   fill (255, 255, 255);
   let t = map(minute(), 0, 59, 0, 1);
   image(escargot, t * width, height - 150, 150, 150);
+  let t2 = map(millis(), 0, 999, 0, 1);
+  image(Lapin, t2 * width, height - 120, 180, 180);
   let s = map(second(), 0, 59, 0, TWO_PI) - HALF_PI;
   rotate(HALF_PI);
-  translate(height, -width/2);
+  translate(height, - width/2);
   fill(255,0,0);
   image(soleil, 0 + cos(s) * width /2 , 0 + sin(s) * width / 2, 200, 200);
   fill(0, 255, 0);
