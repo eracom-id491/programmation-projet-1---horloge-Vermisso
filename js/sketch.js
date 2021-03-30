@@ -36,7 +36,13 @@ function draw(){
   let t = map(minute(), 0, 59, 0, 1);
   image(escargot, t * width, height - 150, 150, 150);
   let t2 = map(millis(), 0, 999, 0, 1);
+
+  //if (millis() >= 1) {
+  //  millis() = 0;
+  //} 
+
   image(Lapin, t2 * width, height - 120, 180, 180);
+
   let s = map(second(), 0, 59, 0, TWO_PI) - HALF_PI;
   rotate(HALF_PI);
   translate(height, - width/2);
